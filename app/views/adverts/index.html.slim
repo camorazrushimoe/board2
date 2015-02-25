@@ -1,0 +1,46 @@
+div.container
+  h1 Listing adverts
+  div.form-group
+  = search_form_for (@q) do |f|
+    .form-group
+      = f.search_field :title_cont  
+    .form-actions
+      = f.button :submit
+  br/   
+  table.table.table-striped
+    thead
+      tr.warning
+        th Title
+        th Description
+        th
+          p = sort_link(@q, :price, 'Price', default_order: :desc)
+        th Category
+        th
+        th
+        th
+        th Image
+        th Category_id
+        th
+          p = sort_link(@q, :updated_at, 'LastUp', default_order: :desc)
+
+
+
+    tbody
+      - @adverts.each do |advert|
+        tr
+          td = advert.title
+          td = advert.description
+          td = advert.price
+          td = advert.category_id
+          td = link_to 'Show', advert
+          td = link_to 'Edit', edit_advert_path(advert)
+          td = link_to 'Destroy', advert, data: {:confirm => 'Are you sure?'}, :method => :delete
+          td
+            img src="#{advert.image}"/
+          td = advert.category_id
+          td = advert.updated_at
+
+  br/
+  = will_paginate @adverts
+  br/
+  = link_to 'New Advert', new_advert_path

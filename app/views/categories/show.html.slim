@@ -1,0 +1,33 @@
+p#notice = notice
+
+h1
+  strong Title:
+  = @category.title
+
+= link_to 'Edit', edit_category_path(@category)
+'|
+= link_to 'Back', categories_path
+
+br/
+table.table.table-striped
+    thead
+      tr.warning
+        th Title
+        th Description
+        th Price
+        th
+        th
+        th
+        th Image
+
+    tbody
+      - @category.adverts.each do |advert|
+        tr
+          td = advert.title
+          td = advert.description
+          td = advert.price
+          td = link_to 'Show', advert
+          td = link_to 'Edit', edit_advert_path(advert)
+          td = link_to 'Destroy', advert, data: {:confirm => 'Are you sure?'}, :method => :delete
+          td
+            img src="#{advert.image}"/

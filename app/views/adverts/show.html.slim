@@ -1,0 +1,25 @@
+
+
+p
+  strong Title:
+  = @advert.title
+p
+  strong Description:
+  = @advert.description
+p
+  strong Price:
+  = @advert.price
+p
+  strong User-email:
+  = @advert.user_id
+  
+img.img-responsive src="#{@advert.image}" width="50%"/
+
+
+
+br/
+= link_to 'Edit', edit_advert_path(@advert)
+'|
+= link_to 'Back', adverts_path
+
+

@@ -1,0 +1,21 @@
+div.col-md-6
+  = simple_form_for(@advert, action: :upload, :html => {multipart: true}) do |f|
+    - if @advert.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@advert.errors.count, "error")} prohibited this advert from being saved:"
+        ul
+          - @advert.errors.full_messages.each do |message|
+            li = message
+
+    .form-inputs
+      = f.input :title
+    .form-inputs
+      = f.input :description
+    .form-inputs
+      = f.input :price
+    .form-inputs
+      = f.association :category
+    .form-inputs
+      = f.input :image, as: :file, multiple: true
+    .form-actions
+      = f.button :submit
