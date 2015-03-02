@@ -8,12 +8,13 @@ class AdvertsController < ApplicationController
     @categories = Category.all
     @q = Advert.ransack(params[:q])
     @adverts = @q.result(:distinct => true)
-    @adverts = @adverts.paginate(:page => params[:page], :per_page => 5)
+    @adverts = @adverts.paginate(:page => params[:page], :per_page => 10)
   end
 
   # GET /adverts/1
   # GET /adverts/1.json
   def show
+
   end
 
   # GET /adverts/new
@@ -62,6 +63,15 @@ class AdvertsController < ApplicationController
     uploader = ImageUploader.new
   end
 
+
+def draft
+    a = Advert.status
+      if Advert.status == "new_adv"
+          a.draft!
+        else
+        end
+    redirect_to :back
+  end
   # DELETE /adverts/1
   # DELETE /adverts/1.json
   def destroy
@@ -80,6 +90,6 @@ class AdvertsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def advert_params
-      params.require(:advert).permit(:title, :description, :price, :user_id, :category_id, :image, :search)
+      params.require(:advert).permit(:title, :description, :price, :user_id, :category_id, :image, :search, :status)
     end
 end

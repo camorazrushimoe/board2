@@ -22,6 +22,8 @@ div.container
         th Category_id
         th
           p = sort_link(@q, :updated_at, 'LastUp', default_order: :desc)
+        th Status
+        th Go to Draft
 
 
 
@@ -35,10 +37,11 @@ div.container
           td = link_to 'Show', advert
           td = link_to 'Edit', edit_advert_path(advert)
           td = link_to 'Destroy', advert, data: {:confirm => 'Are you sure?'}, :method => :delete
-          td
-            img src="#{advert.image}"/
-          td = advert.category_id
+          td = image_tag("#{advert.image}",height: '32', width: '32', class: "img-rounded")
+          td advert category title
           td = advert.updated_at
+          td = advert.status
+          td = button_to "to Draft", method: :draft
 
   br/
   = will_paginate @adverts

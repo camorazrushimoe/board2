@@ -1,5 +1,8 @@
 class Advert < ActiveRecord::Base
-	belongs_to :users
-	belongs_to :category
+	
+	enum status: [:new_adv, :draft, :rejected, :published, :archive]
+
+	belongs_to :user
+	belongs_to :category, inverse_of: :adverts
 	mount_uploader :image, ImageUploader
 end
