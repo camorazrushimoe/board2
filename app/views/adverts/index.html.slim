@@ -19,7 +19,7 @@ div.container
         th
         th
         th Image
-        th Category_id
+        th Category
         th
           p = sort_link(@q, :updated_at, 'LastUp', default_order: :desc)
         th Status
@@ -33,7 +33,7 @@ div.container
           td = advert.title
           td = advert.description
           td = advert.price
-          td = advert.category_id
+          td = advert.category.title
           td = link_to 'Show', advert
           td = link_to 'Edit', edit_advert_path(advert)
           td = link_to 'Destroy', advert, data: {:confirm => 'Are you sure?'}, :method => :delete
