@@ -4,11 +4,11 @@ class AdvertsController < ApplicationController
   # GET /adverts
   # GET /adverts.json
   def index
-    @adverts = Advert.draft
+    @adverts = Advert.where(:status => "published")
     @categories = Category.all
     @q = Advert.ransack(params[:q])
     @adverts = @q.result(:distinct => true)
-    @adverts = @adverts.paginate(:page => params[:page], :per_page => 10)
+    @adverts = @adverts.paginate(:page => params[:page], :per_page => 5)
   end
 
   # GET /adverts/1
@@ -92,6 +92,6 @@ def draft
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def advert_params
-      params.require(:advert).permit(:title, :description, :price, :user_id, :category_id, :image, :search, :status, :adverttype)
+      params.require(:advert).permit(:title, :description, :price, :user_id, :category_id, :image, :search, :status)
     end
 end

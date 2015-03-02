@@ -38,7 +38,7 @@ div.container
           td = link_to 'Show', advert
           td = link_to 'Edit', edit_advert_path(advert)
           td = link_to 'Destroy', advert, data: {:confirm => 'Are you sure?'}, :method => :delete
-          td = image_tag("#{advert.image}",height: '32', width: '32', class: "img-rounded")
+          td = image_tag("#{advert.image.url}", class: "img-responsive", width: "150")
           td = advert.updated_at
           td = advert.status
           td = link_to 'to Draft', :method => :draft

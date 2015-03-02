@@ -2,7 +2,7 @@ class DashboardController < ApplicationController
 
 
 	def index
-		@adverts = Advert.draft
+		@adverts = Advert.all
 	    @categories = Category.all
     	@q = Advert.ransack(params[:q])
     	@adverts = @q.result(:distinct => true)

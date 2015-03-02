@@ -20,7 +20,7 @@ div.col-md-6
     .form-inputs
       = f.input :image, as: :file, multiple: true
     .form-inputs
-      = f.input :status, as: :select, collection: [ "new_adv", "draft", "rejected", "published", "archive" ]
+      = f.select :status, Advert.status.options
     .form-actions
       = f.button :submit
 
