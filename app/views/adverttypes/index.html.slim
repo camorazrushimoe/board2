@@ -1,0 +1,21 @@
+h1 Listing adverttypes
+
+table
+  thead
+    tr
+      th Title
+      th
+      th
+      th
+
+  tbody
+    - @adverttypes.each do |adverttype|
+      tr
+        td = adverttype.title
+        td = link_to 'Show', adverttype
+        td = link_to 'Edit', edit_adverttype_path(adverttype)
+        td = link_to 'Destroy', adverttype, data: {:confirm => 'Are you sure?'}, :method => :delete
+
+br
+
+= link_to 'New Adverttype', new_adverttype_path

@@ -11,25 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150302101827) do
-
-  create_table "advert_types", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "adv_type"
-  end
+ActiveRecord::Schema.define(version: 20150302104154) do
 
   create_table "adverts", force: :cascade do |t|
     t.string   "title"
     t.string   "description"
     t.string   "price"
     t.string   "user_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.string   "image"
-    t.integer  "status",         default: 0
+    t.integer  "status",      default: 0
     t.integer  "category_id"
-    t.integer  "advert_type_id"
+    t.string   "adverttype"
   end
 
   create_table "categories", force: :cascade do |t|

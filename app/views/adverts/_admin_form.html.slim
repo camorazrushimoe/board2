@@ -14,12 +14,17 @@ div.col-md-6
     .form-inputs
       = f.input :price
     .form-inputs
-      = f.association :category
+      = f.association :category    
     .form-inputs
-      = f.association :advert_type    
+      = f.input :adverttype, as: :select, collection: [ "Продажа", "Покупка", "Обмен", "Услуга", "Аренда"]
     .form-inputs
       = f.input :image, as: :file, multiple: true
     .form-inputs
       = f.input :status, as: :select, collection: [ "new_adv", "draft", "rejected", "published", "archive" ]
     .form-actions
       = f.button :submit
+
+
+
+
+      

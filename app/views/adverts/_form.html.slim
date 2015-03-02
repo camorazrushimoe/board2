@@ -16,7 +16,7 @@ div.col-md-6
     .form-inputs
       = f.association :category
     .form-inputs
-      = f.association :advert_type  
+      = f.input :adverttype, as: :select, collection: [ "Продажа", "Покупка", "Обмен", "Услуга", "Аренда"]
     .form-inputs
       = f.input :image, as: :file, multiple: true
     .form-actions

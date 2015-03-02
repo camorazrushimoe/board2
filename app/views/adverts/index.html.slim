@@ -34,7 +34,7 @@ div.container
           td = advert.description
           td = advert.price
           td = advert.category.title
-          td = advert.advert_type.adv_type
+          td = advert.adverttype
           td = link_to 'Show', advert
           td = link_to 'Edit', edit_advert_path(advert)
           td = link_to 'Destroy', advert, data: {:confirm => 'Are you sure?'}, :method => :delete

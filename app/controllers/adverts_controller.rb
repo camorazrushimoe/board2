@@ -92,6 +92,6 @@ def draft
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def advert_params
-      params.require(:advert).permit(:title, :description, :price, :user_id, :category_id, :image, :search, :status)
+      params.require(:advert).permit(:title, :description, :price, :user_id, :category_id, :image, :search, :status, :adverttype)
     end
 end
