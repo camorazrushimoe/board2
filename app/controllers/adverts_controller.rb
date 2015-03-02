@@ -3,12 +3,19 @@ class AdvertsController < ApplicationController
 
   # GET /adverts
   # GET /adverts.json
+  #def index
+  #  @adverts = Advert.where(:status => "published")
+  #  @categories = Category.all
+  #  @q = Advert.ransack(params[:q])
+  #  @adverts = @q.result(:distinct => true)
+  #  @adverts = @adverts.paginate(:page => params[:page], :per_page => 5)
+  #end
+
   def index
-    @adverts = Advert.where(:status => "published")
-    @categories = Category.all
     @q = Advert.ransack(params[:q])
     @adverts = @q.result(:distinct => true)
-    @adverts = @adverts.paginate(:page => params[:page], :per_page => 5)
+    @adverts = @adverts.having_status(:published).paginate(:page => params[:page], :per_page => 5)
+    @categories = Category.all
   end
 
   # GET /adverts/1
