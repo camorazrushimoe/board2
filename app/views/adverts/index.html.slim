@@ -33,7 +33,7 @@ div.container
           td = advert.title
           td = advert.description
           td = advert.price
-          td = advert.category.title
+          td category
           td = link_to 'Show', advert
           td = link_to 'Edit', edit_advert_path(advert)
           td = link_to 'Destroy', advert, data: {:confirm => 'Are you sure?'}, :method => :delete
@@ -41,7 +41,9 @@ div.container
           td advert category title
           td = advert.updated_at
           td = advert.status
-          td = button_to "to Draft", method: :draft
+          td = link_to 'to Draft', :method => :draft
+
+          
 
   br/
   = will_paginate @adverts

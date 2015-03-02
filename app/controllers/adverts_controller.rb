@@ -4,7 +4,7 @@ class AdvertsController < ApplicationController
   # GET /adverts
   # GET /adverts.json
   def index
-    @adverts = Advert.all
+    @adverts = Advert.draft
     @categories = Category.all
     @q = Advert.ransack(params[:q])
     @adverts = @q.result(:distinct => true)
@@ -72,6 +72,8 @@ def draft
         end
     redirect_to :back
   end
+
+
   # DELETE /adverts/1
   # DELETE /adverts/1.json
   def destroy
