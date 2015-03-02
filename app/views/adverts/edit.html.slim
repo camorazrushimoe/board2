@@ -1,7 +1,8 @@
 h1 Editing advert
-
-== render 'admin_form'
-
+- if current_user.email == "biginf.com@gmail.com"
+	== render 'admin_form'
+- else 
+	== render 'form'
 = link_to 'Show', @advert
 '|
 = link_to 'Back', adverts_path

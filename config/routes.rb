@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  resources :advert_types
+
   devise_for :users
   resources :categories
+  resources :dashboard
 
   resources :adverts
 

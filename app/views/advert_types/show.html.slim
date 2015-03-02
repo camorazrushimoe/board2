@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong Adv type:
+  = @advert_type.adv_type
+
+= link_to 'Edit', edit_advert_type_path(@advert_type)
+'|
+= link_to 'Back', advert_types_path

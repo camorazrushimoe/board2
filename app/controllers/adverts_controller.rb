@@ -4,7 +4,7 @@ class AdvertsController < ApplicationController
   # GET /adverts
   # GET /adverts.json
   def index
-    @adverts = Advert.all
+    @adverts = Advert.draft
     @categories = Category.all
     @q = Advert.ransack(params[:q])
     @adverts = @q.result(:distinct => true)
