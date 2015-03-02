@@ -1,2 +1,52 @@
 h1 dgsfg
 
+div.container
+  h1 Listing adverts
+  div.form-group
+  = search_form_for (@q) do |f|
+    .form-group
+      = f.search_field :title_cont  
+    .form-actions
+      = f.button :submit
+  br/   
+  table.table.table-striped
+    thead
+      tr.warning
+        th Title
+        th Description
+        th
+          p = sort_link(@q, :price, 'Price', default_order: :desc)
+        th Category
+        th
+        th
+        th
+        th Image
+        th Category
+        th
+          p = sort_link(@q, :updated_at, 'LastUp', default_order: :desc)
+        th Status
+        th Go to Draft
+
+
+
+    tbody
+      - @current_user.adverts.each do |advert|
+        tr
+          td = advert.title
+          td = advert.description
+          td = advert.price
+          td dddd
+          td = link_to 'Show', advert
+          td = link_to 'Edit', edit_advert_path(advert)
+          td = link_to 'Destroy', advert, data: {:confirm => 'Are you sure?'}, :method => :delete
+          td = image_tag("#{advert.image}",height: '32', width: '32', class: "img-rounded")
+          td advert category title
+          td = advert.updated_at
+          td = advert.status
+          td = link_to 'to Draft', :method => :draft
+          
+
+  br/
+  = will_paginate @adverts
+  br/
+  = link_to 'New Advert', new_advert_path

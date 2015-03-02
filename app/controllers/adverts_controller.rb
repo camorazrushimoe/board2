@@ -32,7 +32,7 @@ class AdvertsController < ApplicationController
   # POST /adverts.json
   def create
     @advert = Advert.new(advert_params)
-    @advert.user_id = current_user.email
+    @advert.user_id = current_user.id
 
     respond_to do |format|
       if @advert.save
