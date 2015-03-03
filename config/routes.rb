@@ -1,17 +1,25 @@
 Rails.application.routes.draw do
-  resources :adverttypes
-
-  resources :advert_types
 
   devise_for :users
   resources :categories
-  resources :dashboard
+  resources :dashboard do
+    collection do
+      get 'in_draft'
+    end
+  end
 
-  resources :adverts
+  resources :adverts do
+    collection do
+      get 'to_draft'
+    end
+  end
 
   resources :users
 
   root to: "adverts#index"
+
+  get '/in_draft' => "in_draft#dashboard"
+  get '/to_draft' => "to_draft#adverts"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

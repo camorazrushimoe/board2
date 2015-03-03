@@ -41,7 +41,7 @@ div.container
           td = image_tag("#{advert.image.url}", class: "img-responsive", width: "150")
           td = advert.updated_at
           td = advert.status
-          td = link_to 'to Draft', :method => :draft
+          td = link_to 'to Draft', to_draft_adverts_path
 
           
 

@@ -33,6 +33,8 @@ class AdvertsController < ApplicationController
 
   # GET /adverts/1/edit
   def edit
+    @advstatus = "new_adv" || "archive"
+
   end
 
   # POST /adverts
@@ -56,6 +58,12 @@ class AdvertsController < ApplicationController
   # PATCH/PUT /adverts/1.json
   def update
     respond_to do |format|
+      if
+        current_user.id != 2
+        @advert.status = 'new_adv'
+      else
+      end
+
       if @advert.update(advert_params)
         format.html { redirect_to @advert, notice: 'Advert was successfully updated.' }
         format.json { render :show, status: :ok, location: @advert }
@@ -71,12 +79,7 @@ class AdvertsController < ApplicationController
   end
 
 
-def draft
-    a = Advert.status
-      if Advert.status == "new_adv"
-          a.draft!
-        else
-        end
+  def to_draft
     redirect_to :back
   end
 
